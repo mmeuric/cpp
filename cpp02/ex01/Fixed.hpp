@@ -1,0 +1,41 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   Fixed.hpp                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mmeuric <mmeuric@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/06/10 23:09:45 by mmeuric           #+#    #+#             */
+/*   Updated: 2025/06/10 23:09:46 by mmeuric          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include <fstream>
+#include <string>
+#include <iostream>
+#include <cmath>
+
+#ifndef FIXED
+# define FIXED
+
+class Fixed
+{
+private:
+	int	value;
+	static int fract;
+public:
+	Fixed();
+	Fixed(int val);
+	Fixed(float val);
+	Fixed(Fixed const &cpy);
+	~Fixed();
+	Fixed &operator=(const Fixed &other);
+	int	getRawBits(void) const;
+	void setRawBits (int const raw);
+	int	toInt(void) const;
+	float toFloat(void) const;
+};
+
+std::ostream &operator<<(std::ostream &os, const Fixed &fx);
+
+#endif
